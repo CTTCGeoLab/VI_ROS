@@ -59,7 +59,7 @@ $ roslaunch ndvi ndvi_kinect.launch
 ```
 
 ## Screenshots
-1) Inputs:
+### Inputs:
 - RGB image
 
 ![RGB image](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/BGR_HD_1519205832316048560.png)
@@ -68,7 +68,7 @@ $ roslaunch ndvi ndvi_kinect.launch
 
 ![IR image](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/IR_151920575742319333.png)
 
-2) Outputs:
+### Outputs:
 - NDVI image
 
 ![NDVI image](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/NDVI_151920575742319333.png)
