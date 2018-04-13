@@ -61,14 +61,23 @@ $ roslaunch ndvi ndvi_kinect.launch
 ## Screenshots
 1) Inputs:
 - RGB image
+
 ![RGB image](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/BGR_HD_1519205832316048560.png)
+
 - IR image
+
 ![IR image](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/IR_151920575742319333.png)
 
 2) Outputs:
 - NDVI image
+
 ![NDVI image](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/NDVI_151920575742319333.png)
+
 - NDVI Point Cloud
+
 ![NDVI PointCloud](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/NDVIPointCloud.png)
+
 - NDVI Point Cloud Filtered
+
 ![NDVI PointCloud filtered](https://github.com/CTTCGeoLab/VI_ROS/blob/master/res/NDVIPointCloudFiltered.png)
+
