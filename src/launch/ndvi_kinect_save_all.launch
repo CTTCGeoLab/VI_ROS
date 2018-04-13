@@ -1,0 +1,56 @@
+<launch>
+
+	<arg name="save_rgb"         	default="true"/>
+	<arg name="save_ir"         	default="true"/>
+	<arg name="save_ndvi"         	default="true"/>
+	<arg name="save_depth"         	default="true"/>
+	<arg name="save_path"         	default="/home/odroid/catkin_ws/src/ndvi/data/"/>
+	
+	<arg name="publish_ndvi"        default="true"/>
+	<arg name="visualize"         	default="false"/>
+	
+	<arg name="base_name"           default="ndvi"/>
+    <arg name="machine"             default="localhost"/>
+    <arg name="queue_size"          default="5"/>
+    <arg name="respawn"             default="true"/>
+    
+    <arg name="topic_pcl_rgbd"      default="/kinect2/sd/points"/>
+ 	<arg name="topic_pcl_ndvi"      default="/ndvi/sd/ndvipoints"/>
+  
+	<node pkg="ndvi" type="ndvi" name="ndvi" output="screen">
+	
+		<param name="save_rgb"         type="bool"   value="$(arg save_rgb)"/>
+		<param name="save_ir"          type="bool"   value="$(arg save_ir)"/>
+		<param name="save_depth"       type="bool"   value="$(arg save_depth)"/>
+		<param name="save_ndvi"        type="bool"   value="$(arg save_ndvi)"/>
+		<param name="publish_ndvi"     type="bool"   value="$(arg publish_ndvi)"/>
+		<param name="visualize"        type="bool"   value="$(arg visualize)"/>
+		<param name="save_path"        type="str"    value="$(arg save_path)"/>
+	</node>
+	
+	
+	<node pkg="nodelet" type="nodelet" name="ndvi_nodelet_manager"  args="manager" output="screen"/>
+	  
+	<!-- ndvi sd point cloud (512 x 424) -->
+	<node pkg="nodelet" type="nodelet" name="$(arg base_name)_points_xyzrgb_sd"
+	    args="load depth_image_proc/point_cloud_xyzrgb ndvi_nodelet_manager" respawn="$(arg respawn)">
+        
+		<remap from="rgb/camera_info"             to="kinect2/sd/camera_info"/>
+		<remap from="rgb/image_rect_color"        to="ndvi/sd/ndvi_image"/>
+		<remap from="depth_registered/image_rect" to="kinect2/sd/image_depth_rect"/>
+		<remap from="depth_registered/points"     to="ndvi/sd/ndvipoints"/>
+		<param name="queue_size" type="int" value="$(arg queue_size)"/>
+		
+	</node>
+	
+	<node pkg="pcl_ros" type="pointcloud_to_pcd" name="pointcloud_rgbd_to_pcd" output="screen" args="input:=$(arg topic_pcl_rgbd)">
+		<param name="prefix"        type="str"    value="$(arg save_path)PCL_RGBD_"/>
+		<param name="binary"        type="bool"    value="true"/>
+	</node>
+	
+	<node pkg="pcl_ros" type="pointcloud_to_pcd" name="pointcloud_ndvi_to_pcd" output="screen" args="input:=$(arg topic_pcl_ndvi)">
+		<param name="prefix"        type="str"    value="$(arg save_path)PCL_NDVI_"/>
+		<param name="binary"        type="bool"    value="true"/>
+	</node>
+  
+</launch>
