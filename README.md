@@ -1,7 +1,7 @@
 # VI_ROS
-VI_ROS package
+**VI_ROS package**
 
-This package is a Vegetation Indices generator tool using a Kinect sensor. It can be used to generate VI (Vegetation Indices) images and 3D point clouds of the environment for monitoring the vegetation. At the moment only NDVI VI ais supported.
+This package is a Vegetation Indices generator tool using a Kinect sensor. It can be used to generate VI (Vegetation Indices) images and 3D point clouds of the environment for monitoring vegetation purposes. At the moment only NDVI VI is supported.
 
 **Authors** David Calero <<david.calero@cttc.es>>, Enric Fernandez <<enric.fernandez@cttc.es>>, Centre Tecnològic de Telecomunicacions de Catalunya [CTTC](http://www.cttc.es/) 
 
