@@ -9,14 +9,13 @@ This package is a Vegetation Indices generator tool using a Kinect sensor. It ca
 This project was build with ROS Kinetic but should work on older ROS versions as well. In addition to that, this project depends on the ROS packages [iai_kinect2](https://github.com/code-iai/iai_kinect2), [OpenCV_3.X](https://opencv.org/)  and [pcl_ros](http://wiki.ros.org/pcl_ros). 
 
 ## Installation
-
 ```
 $ cd ~/catkin_ws
 $ git https://github.com/CTTCGeoLab/VI_ROS.git src/ndvi
 $ catkin_make --pkg ndvi
 ```
-## Configuration
 
+## Configuration
 Configuration parameters can be found at the ndvi_kinect.launch file.
 ```
 save_path:=<string>
@@ -53,7 +52,23 @@ topic_pcl_ndvifil2:=<string>
     default: /ndvi/sd/points
     info:    set the topic name of the NDVI point cloud second filtered generated to save  
 ```
+
 ## Execution
 ```
 $ roslaunch ndvi ndvi_kinect.launch
 ```
+
+## Screenshots
+1) Inputs:
+- RGB image
+![RGB image](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/BGR_HD_1519205832316048560.png)
+- IR image
+![IR image](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/IR_151920575742319333.png)
+
+2) Outputs:
+- NDVI image
+![NDVI image](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/NDVI_151920575742319333.png)
+- NDVI Point Cloud
+![NDVI PointCloud](https://raw.githubusercontent.com/CTTCGeoLab/VI_ROS/master/res/NDVIPointCloud.png)
+- NDVI Point Cloud Filtered
+![NDVI PointCloud filtered](https://github.com/CTTCGeoLab/VI_ROS/blob/master/res/NDVIPointCloudFiltered.png)
